@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "file-operations": {
+      "command": "node",
+      "args": [
+        "/Users/ktanaka/gitrepos/playground/try-mcp/test-mcp/build/src/index.js"
+      ],
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  }
+}
