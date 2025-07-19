@@ -11,6 +11,11 @@ export const DEFAULT_SECURITY_CONFIG = {
 
 export const isPathSafe = (filePath: string, config: SecurityConfig = DEFAULT_SECURITY_CONFIG): boolean => {
   try {
+    // 空文字列または無効なパスをチェック
+    if (!filePath || filePath.trim() === '') {
+      return false
+    }
+
     const resolvedPath = path.resolve(filePath)
 
     // パストラバーサル攻撃の検出
@@ -38,15 +43,17 @@ export const isPathSafe = (filePath: string, config: SecurityConfig = DEFAULT_SE
       return false
     }
 
-    // ファイル拡張子のチェック
+    // ファイル拡張子のチェック（ディレクトリは除外）
     const fileExt = path.extname(filePath).toLowerCase()
 
-    if (config.blockedExtensions && config.blockedExtensions.includes(fileExt)) {
-      return false
-    }
+    if (fileExt) { // 拡張子がある場合のみチェック
+      if (config.blockedExtensions && config.blockedExtensions.includes(fileExt)) {
+        return false
+      }
 
-    if (config.allowedExtensions && !config.allowedExtensions.includes(fileExt)) {
-      return false
+      if (config.allowedExtensions && !config.allowedExtensions.includes(fileExt)) {
+        return false
+      }
     }
 
     return true
