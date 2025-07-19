@@ -8,10 +8,15 @@
     "build/"
   ],
   "scripts": {
-    "build": "tsc && chmod +x build/src/index.js",
-    "dev": "tsc --watch",
+    "build": "vite build && chmod +x build/src/index.js",
+    "dev": "vite build --watch",
     "start": "node build/src/index.js",
-    "test": "node --test build/tests/*.test.js",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage",
+    "lint": "eslint src/ tests/",
+    "lint:fix": "eslint src/ tests/ --fix",
+    "typecheck": "tsc --noEmit",
     "prepublishOnly": "pnpm run build"
   },
   "keywords": [],
@@ -22,7 +27,15 @@
     "@modelcontextprotocol/sdk": "^1.16.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.31.0",
+    "@stylistic/eslint-plugin": "^5.2.0",
     "@types/node": "^24.0.15",
-    "typescript": "^5.8.3"
+    "@typescript-eslint/eslint-plugin": "^8.37.0",
+    "@typescript-eslint/parser": "^8.37.0",
+    "@vitest/ui": "^3.2.4",
+    "eslint": "^9.31.0",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.5",
+    "vitest": "^3.2.4"
   }
 }
