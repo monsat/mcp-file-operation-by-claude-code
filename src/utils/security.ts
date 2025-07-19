@@ -1,5 +1,5 @@
 import path from 'path'
-import { SecurityConfig } from '../types/file-tools.js'
+import { SecurityConfig } from '../types/file-tools'
 
 export const DEFAULT_SECURITY_CONFIG = {
   allowedDirectories: [process.cwd()],

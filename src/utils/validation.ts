@@ -4,7 +4,7 @@ import {
   ListFilesParams,
   DeleteFileParams,
   CreateDirectoryParams,
-} from '../types/file-tools.js'
+} from '../types/file-tools'
 
 export const validateReadFileParams = (params: unknown): params is ReadFileParams => {
   if (!params || typeof params !== 'object') {
